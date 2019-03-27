@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.CommonDao">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.CommonDo">
+        <id column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="CREATOR" jdbcType="INTEGER" property="creator"/>
+        <result column="OPERATOR" jdbcType="INTEGER" property="operator"/>
+        <result column="ROW_LOCK" jdbcType="VARCHAR" property="rowLock"/>
+        <result column="ROW_STATUS" jdbcType="VARCHAR" property="rowStatus"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <!-- 基本列 -->
+    <sql id="Base_Column_List">
+        ID,
+        CREATE_TIME,
+        UPDATE_TIME,
+        CREATOR,
+        OPERATOR,
+        ROW_LOCK,
+        ROW_STATUS
+    </sql>
+
+    <select id="query" parameterType="com.example.demo.query.CommonQuery" resultMap="BaseResultMap">
+        SELECT * FROM common
+    </select>
+
+    <select id="getInfoById" resultMap="BaseResultMap">
+        SELECT * from common where id = #{id}
+    </select>
+</mapper>
